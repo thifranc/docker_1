@@ -1,0 +1,2 @@
+docker swarm join-token worker ; docker-machine ssh Aiur
+then copy-paste output command and run it to get join swarm

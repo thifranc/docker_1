@@ -1,0 +1,1 @@
+docker run -d --name Abathur -p 3000:3000 python:2-slim ; pbpaste > app.py ; echo "Flask==0.10.1" > requirements.txt && docker cp ./requirements.txt Abathur:/ && docker cp ./app.py Abathur:/ && docker exec Abathur "pip install -r requirements.txt ; /app.py"
