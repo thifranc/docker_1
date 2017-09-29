@@ -1,1 +1,13 @@
-docker run -d --name Abathur -p 3000:3000 python:2-slim ; pbpaste > app.py ; echo "Flask==0.10.1" > requirements.txt && docker cp ./requirements.txt Abathur:/ && docker cp ./app.py Abathur:/ && docker exec Abathur "pip install -r requirements.txt ; /app.py"
+mkdir ~/flask
+echo "from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+	
+if __name__ == \"__main__\":
+	app.run(debug=True, host=\"0.0.0.0\", port=3000)" > app.py
+echo "pip install Flask && python app.py" > launch.sh
+mv app.py launch.sh ~/flask
+docker run -d -v ${HOME}/flask:/root --name Abathur -p 3000:3000 --workdir /root python:2-slim /bin/bash launch.sh
