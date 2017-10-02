@@ -1,0 +1,11 @@
+docker pull hello-world
+docker pull nginx
+docker pull alpine
+docker pull debian
+docker pull mysql
+docker pull wordpress
+docker pull phpmyadmin/phpmyadmin
+docker pull python:2.7-slim
+docker pull rabbitmq
+docker pull 42school/engineering-bay
+docker pull 42school/marine-squad
