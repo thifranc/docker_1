@@ -1,0 +1,2 @@
+docker build --tag tspk .
+docker run -d -p "9987:9987/udp" -it --name tspeak tspk

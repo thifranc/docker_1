@@ -1,1 +1,1 @@
-docker pull alpine ; docker run --rm --name test -it alpine ; docker attach test
+docker run --rm --name test -it alpine ; docker attach test
