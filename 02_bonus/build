@@ -1,0 +1,3 @@
+docker build --tag vim ../01_dockerfiles/ex00/
+docker build --tag tspk ../01_dockerfiles/ex01/
+docker build --tag gogs ../01_dockerfiles/ex03/
