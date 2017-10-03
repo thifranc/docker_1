@@ -1,0 +1,25 @@
+version: '3'
+services:
+  gogs:
+    build: ./gogs
+    ports:
+      - "8300:3000"
+      - "8322:22"
+    links:
+      - db
+    volumes:
+      - gogs-data:/data
+    environment:
+      - USER=git
+  db:
+    build: ./psql
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=gogs
+      - POSTGRES_DB=gogs
+volumes:
+  gogs-data:
+    driver: local
