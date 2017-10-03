@@ -1,3 +1,1 @@
-docker service logs --follow engineering-bay
-docker logs --follow $(docker ps -a --filter  -q)
-docker logs --follow $(docker ps -q --latest -f name=engineering-bay)
+docker logs --follow $(docker ps -q --latest -f "name=engineering-bay")
