@@ -10,7 +10,7 @@ const config = {
   queriesToAddLang: ['products', 'legumes'],
   //node-pg config
   pgConfig: {
-    user: getStringEnvVar('POSTGRES_USER', 'root'),
+    user: getStringEnvVar('POSTGRES_USER', 'postgres'),
     database: getStringEnvVar('POSTGRES_DATABASE', 'monsieurtshirt'),
     password: getStringEnvVar('POSTGRES_PASSWORD', 'password'),
     host: getStringEnvVar('POSTGRES_HOST', 'localhost'),

@@ -13,6 +13,7 @@ services:
       - /app/node_modules
     environment:
       - POSTGRES_HOST=database.monsieurtshirt
+      - POSTGRES_DATABASE=monsieurtshirt
     depends_on:
       - database
 
@@ -21,11 +22,6 @@ services:
     container_name: database
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=root
-      - POSTGRES_DB=monsieurtshirt
-      - PGDATA=/database
     volumes:
       - database:/database
 

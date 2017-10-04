@@ -20,13 +20,15 @@ SET row_security = off;
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
-
 --
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
+CREATE DATABASE monsieurtshirt;
+
+\c monsieurtshirt
 
 SET search_path = public, pg_catalog;
 
@@ -44,7 +46,7 @@ CREATE TABLE image (
 );
 
 
-ALTER TABLE image OWNER TO root;
+ALTER TABLE image OWNER TO postgres;
 
 --
 -- Name: image_id_seq; Type: SEQUENCE; Schema: public; Owner: root
@@ -58,7 +60,7 @@ CREATE SEQUENCE image_id_seq
     CACHE 1;
 
 
-ALTER TABLE image_id_seq OWNER TO root;
+ALTER TABLE image_id_seq OWNER TO postgres;
 
 --
 -- Name: image_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
@@ -78,7 +80,7 @@ CREATE TABLE product (
 );
 
 
-ALTER TABLE product OWNER TO root;
+ALTER TABLE product OWNER TO postgres;
 
 --
 -- Name: product_id_seq; Type: SEQUENCE; Schema: public; Owner: root
@@ -92,7 +94,7 @@ CREATE SEQUENCE product_id_seq
     CACHE 1;
 
 
-ALTER TABLE product_id_seq OWNER TO root;
+ALTER TABLE product_id_seq OWNER TO postgres;
 
 --
 -- Name: product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
@@ -111,7 +113,7 @@ CREATE TABLE product_image (
 );
 
 
-ALTER TABLE product_image OWNER TO root;
+ALTER TABLE product_image OWNER TO postgres;
 
 --
 -- Name: image id; Type: DEFAULT; Schema: public; Owner: root
@@ -194,8 +196,8 @@ ALTER TABLE ONLY product
 -- Name: public; Type: ACL; Schema: -; Owner: root
 --
 
-REVOKE ALL ON SCHEMA public FROM root;
-GRANT ALL ON SCHEMA public TO root;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
 
 
 --
