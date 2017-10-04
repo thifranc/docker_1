@@ -1,0 +1,53 @@
+version: '2'
+services:
+
+  public-api:
+    build: ./public-api
+    container_name: public-api
+    external_links:
+      - database:database.monsieurtshirt
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./public-api:/app
+      - /app/node_modules
+    environment:
+      - POSTGRES_HOST=database.monsieurtshirt
+    depends_on:
+      - database
+
+  database:
+    build: ./database
+    container_name: database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=root
+      - POSTGRES_DB=monsieurtshirt
+      - PGDATA=/database
+    volumes:
+      - database:/database
+
+  redis:
+    build: ./redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    depends_on:
+      - public-api
+    volumes:
+      - ./nginx/nginxConf:/nginxConf
+    ports:
+      - "80:80"
+volumes:
+  database:
+    driver: local
+  redis:
+    driver: local
